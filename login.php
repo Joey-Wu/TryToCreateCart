@@ -19,7 +19,7 @@ if (isset($_POST["btnHome"]))
 
 header("content-type:text/html; charset=utf-8");
 
-$db = new PDO("mysql:host=127.0.0.1;dbname=directory;port=3306", "root", "root");
+$db = new PDO("mysql:host=127.0.0.1;dbname=trycart;port=3306", "root", "root");
 $db->exec("set names utf8");
 
 $sUserName = $_POST["txtUserName"];
@@ -27,6 +27,9 @@ $sUserPassword = $_POST["txtPassword"];
 
 
 // 查詢帳號密碼
+// 帳：abc 密：456
+// 帳：qwe 密：123
+// 帳：zxc 密：789
 $result = $db->query("select mempasswd from member where memName='$sUserName'");
  
 

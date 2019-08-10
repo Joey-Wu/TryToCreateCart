@@ -8,7 +8,7 @@ if (isset($_SESSION["txtUserName"])){
  header("location:login.php");
 }
 
-$db = new PDO("mysql:host=127.0.0.1;dbname=directory;port=3306", "root", "root");
+$db = new PDO("mysql:host=127.0.0.1;dbname=trycart;port=3306", "root", "root");
 $result = $db->query("select * from product");
 
 ?>
