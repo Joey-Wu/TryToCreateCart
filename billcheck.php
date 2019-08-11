@@ -87,23 +87,7 @@ while($row = $result->fetch()){
                             where b.pdtid=p.pdtid and 
                             b.bid =$bidTmp and b.memid={$userid["memid"]} and status =0 
                             group by b.bid,b.memid");
-
-   // 取消當前訂單
-    if (isset($_POST["btnCancal"]))
-        {   
-            $db->query("update billdetial set status='-1' where bid =$bidTmp and memid={$userid["memid"]} and status =0");
-            header("Location: index.php");
-            exit();
-        }
-    // 確認當前訂單
-        if (isset($_POST["btnckOK"]))
-        {
-            $db->query("update billdetial set status='1' where bid =$bidTmp and memid={$userid["memid"]} and status=0");
-            header("Location: index.php");
-            exit();
-        }
-
-
+  
 ?>
 
 <!DOCTYPE html>
