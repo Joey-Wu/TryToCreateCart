@@ -9,7 +9,7 @@ if (isset($_SESSION["txtUserName"])){
 }
 
 $db = new PDO("mysql:host=127.0.0.1;dbname=trycart;port=3306", "root", "root");
-$result = $db->query("select * from product");
+$result = $db->query("select * from product order by pdtid");
 
 ?>
 
@@ -23,7 +23,8 @@ $result = $db->query("select * from product");
 </head>
 <body>
     <tr>Hello , <?php echo $sUserName; ?></tr>
-    <form>
+    <!--<form method="get" action="billcheck.php">-->
+    <form method="post" action="billcheck.php">
     <tr>
     <table border="1">
             <td>產品序號</td>
@@ -35,7 +36,7 @@ $result = $db->query("select * from product");
             <td><?php echo $row["pdtid"]?></td>
             <td><?php echo $row["pdtName"]?></td>
             <td><?php echo $row["pdtprice"]?></td>
-            <td><input type="number" min="0" max="10" value="0" name="int_count" id="intCount" /></td>
+            <td><input type="number" min="0" max="10" value="0" name="int_count[]" /></td>
         </tr>
         <?php } ?>
     </table>

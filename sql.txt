@@ -7,25 +7,43 @@ USE `trycart`;
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `billdetial`
+--
+
+CREATE TABLE IF NOT EXISTS `billdetial` (
+  `bid` bigint(14) UNSIGNED NOT NULL,
+  `memid` int(10) UNSIGNED NOT NULL,
+  `pdtid` int(11) UNSIGNED NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '-2=退貨,-1=取消,0=未結,1=已結',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`bid`,`pdtid`,`memid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `member`
 --
 
-CREATE TABLE `member` (
-  `memid` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `member` (
+  `memid` int(11) NOT NULL AUTO_INCREMENT,
   `memName` varchar(10) NOT NULL,
   `mempasswd` varchar(8) NOT NULL,
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`memid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `member`
 --
 
 INSERT INTO `member` (`memid`, `memName`, `mempasswd`, `createtime`, `uptime`) VALUES
-(1, 'abc', '456', '2019-08-07 06:04:08', '2019-08-07 06:04:44'),
-(2, 'qwe', '123', '2019-08-07 09:01:36', '2019-08-07 09:01:36'),
-(3, 'zxc', '789', '2019-08-07 09:01:44', '2019-08-07 09:01:44');
+(1, 'abc', '456', '2019-08-06 22:04:08', '2019-08-06 22:04:44'),
+(2, 'qwe', '123', '2019-08-07 01:01:36', '2019-08-07 01:01:36'),
+(3, 'zxc', '789', '2019-08-07 01:01:44', '2019-08-07 01:01:44');
 
 -- --------------------------------------------------------
 
@@ -33,52 +51,21 @@ INSERT INTO `member` (`memid`, `memName`, `mempasswd`, `createtime`, `uptime`) V
 -- 資料表結構 `product`
 --
 
-CREATE TABLE `product` (
-  `pdtid` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `product` (
+  `pdtid` int(11) NOT NULL AUTO_INCREMENT,
   `pdtName` varchar(30) NOT NULL,
   `pdtprice` int(11) NOT NULL DEFAULT '0',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`pdtid`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `product`
 --
 
 INSERT INTO `product` (`pdtid`, `pdtName`, `pdtprice`, `createtime`, `uptime`) VALUES
-(1, 'Apple', 10, '2019-08-07 09:08:21', '2019-08-07 09:08:21'),
-(2, 'Orange', 8, '2019-08-07 09:08:34', '2019-08-07 09:10:36'),
-(3, 'Mango', 38, '2019-08-07 09:09:22', '2019-08-07 09:10:53'),
-(4, 'banana', 6, '2019-08-07 09:10:03', '2019-08-07 09:10:03');
-
---
--- 已傾印資料表的索引
---
-
---
--- 資料表索引 `member`
---
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`memid`);
-
---
--- 資料表索引 `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`pdtid`);
-
---
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
---
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `member`
---
-ALTER TABLE `member`
-  MODIFY `memid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `product`
---
-ALTER TABLE `product`
-  MODIFY `pdtid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+(1, 'Apple', 10, '2019-08-07 01:08:21', '2019-08-07 01:08:21'),
+(2, 'Orange', 8, '2019-08-07 01:08:34', '2019-08-07 01:10:36'),
+(3, 'Mango', 38, '2019-08-07 01:09:22', '2019-08-07 01:10:53'),
+(4, 'banana', 6, '2019-08-07 01:10:03', '2019-08-07 01:10:03');
