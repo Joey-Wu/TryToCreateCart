@@ -10,6 +10,12 @@ if (isset($_GET["logout"]))
 	exit();
 }
 
+if (isset($_GET["billhistory"]))
+{
+  header("Location: billhistory.php");
+	exit();
+}
+
 // 判斷跳轉回首頁
 if (isset($_POST["btnHome"]))
 {

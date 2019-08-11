@@ -26,6 +26,7 @@ else
     <td align="center" valign="baseline"><a href="login.php">登入</a> 
   <?php else: ?>
     <td align="center" valign="baseline"><a href="login.php?logout=1">登出</a>
+    | <a href="login.php?billhistory=1">訂單紀錄</a>
   <?php endif; ?>
     
     | <a href="product.php">產品訂購</a></td>
