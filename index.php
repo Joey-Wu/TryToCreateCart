@@ -28,7 +28,7 @@ else
     <td align="center" valign="baseline"><a href="login.php?logout=1">登出</a>
   <?php endif; ?>
     
-    | <a href="product.php">會員專用頁</a></td>
+    | <a href="product.php">產品訂購</a></td>
   </tr>
   <tr>
     <td align="center" bgcolor="#CCCCCC"><?php echo "Welcome! " . $sUserName ?> </td>
